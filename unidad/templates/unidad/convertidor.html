@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convertidor de Unidades</title>
+</head>
+<body>
+    <h2>Convertidor de Unidades</h2>
+    <form method="post">
+        {% csrf_token %}
+        <input type="number" step="any" name="cantidad" placeholder="Cantidad" required>
+        <select name="unidad_origen">
+            <option value="km">Kilómetros</option>
+            <option value="m">Metros</option>
+            <option value="cm">Centímetros</option>
+        </select>
+        <span>→</span>
+        <select name="unidad_destino">
+            <option value="km">Kilómetros</option>
+            <option value="m">Metros</option>
+            <option value="cm">Centímetros</option>
+        </select>
+        <button type="submit">Convertir</button>
+    </form>
+
+    {% if resultado is not None %}
+        <h3>Resultado: {{ resultado }} {{ unidad_resultado }}</h3>
+    {% endif %}
+</body>
+</html>
